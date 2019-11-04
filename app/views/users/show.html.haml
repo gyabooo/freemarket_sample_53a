@@ -1,4 +1,4 @@
-- if current_page?(user_path(current_user))
+- if user_signed_in? && current_page?(user_path(current_user))
   - breadcrumb :mypage
 - else
   - breadcrumb :user, @user
@@ -6,7 +6,7 @@
 = render 'items/header_guide'
 = render 'shared/breadcrumbs'
 
-- if current_page?(user_path(current_user))
+- if user_signed_in? && current_page?(user_path(current_user))
   %main.mypage-container.clearfix
     = render 'users/mypage/content'
     = render 'users/mypage/side'
