@@ -1,29 +1,29 @@
 module ListingsHelper
   def listings_title
-    if active_page.include?('listing')
+    if listings_active_page.include?('listing')
       content_tag :h3, "出品した商品", class: "listings__title"
-    elsif active_page.include?('in_progress')
+    elsif listings_active_page.include?('in_progress')
       content_tag :h3, "取引中の商品", class: "listings__title"
-    elsif active_page.include?('completed')
+    elsif listings_active_page.include?('completed')
       content_tag :h3, "売却済みの商品", class: "listings__title"
     end
   end
 
-  def listings_list(list)
-    list.each do |type|
+  def listings_list
+    ['listing', 'in_progress', 'completed'].each do |type|
         concat (
-          content_tag :li, class: "listings__content__list__title #{ 'active' if active_page.include?(type) }" do
-            concat link_to item_tag(type), eval("#{type}_user_path(current_user)")
+          content_tag :li, class: "listings__content__list__title #{ 'active' if listings_active_page.include?(type) }" do
+            concat link_to ilistings_item_tag(type), eval("#{type}_user_path(current_user)")
           end
         )
     end
   end
 
-  def active_item_tag
-    item_tag(active_page)
+  def listings_active_item_tag
+    ilistings_item_tag(listings_active_page)
   end
 
-  def active_page
+  def listings_active_page
     if request.url.include?(listing_user_url(current_user))
       'listing'
     elsif request.url.include?(in_progress_user_url(current_user))
@@ -35,7 +35,7 @@ module ListingsHelper
 
   private
 
-  def item_tag(type)
+  def ilistings_item_tag(type)
     case type
     when 'listing'
       "出品中"
