@@ -8,6 +8,12 @@ crumb :mypage do
   parent :root
 end
 
+# 他のユーザーページ
+crumb :user do |user|
+  link "#{user.nickname}", user_path(user)
+  parent :root
+end
+
 crumb :listing do
   link "出品した商品 - 出品中", listing_user_path(current_user)
   parent :mypage
