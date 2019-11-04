@@ -97,34 +97,4 @@
           現在、やることリストはありません
 
   %section.tab-container
-    %h2.tab-head.bold
-      購入した商品
-    %ul.tabs
-      %li.active
-        %h3.bold
-          = link_to root_path, {data: {toggle: "tab"}} do
-            取引中
-      %li
-        %h3.bold
-          = link_to root_path, {data: {toggle: "tab"}} do
-            過去の取引
-    .tab-content
-      %ul#tab-trade-now.tab-content__items.tab-pane.active
-        %li.tab-content__items__item-not.bold
-          取引中の商品がありません
-      %ul#tab-trade-old.tab-content__items.tab-pane
-        %li
-          = link_to root_path, class: "tab-content__items__item" do
-            %figure
-              = image_tag "/300x300.png", class: 'lazyloaded'
-            .tab-content__items__item__body
-              .tab-content__items__item__body__text
-                即購入OK！サンプル商品abcdefghijklm...を購入したってばよ！
-                %span
-                  取引が完了しました
-              .tab-content__items__item__body__status.bold.done
-                取引完了
-            %i.icon-arrow-right
-        %li.tab-content__items__go-list
-          = link_to root_path do
-            一覧に戻る
+    = render partial: 'users/purchases/main_purchase', locals: { items: @items }

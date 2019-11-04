@@ -1,0 +1,10 @@
+.purchases
+  = purchases_title
+  .purchases__content
+    %ul.purchases__content__list
+      - purchases_list
+    %ul.purchases__content__items
+      - if items.present?
+        = render partial: 'users/purchases/item', collection: items
+      - else
+        %li.purchases__content__items__not-found="#{purchases_active_item_tag}の商品がありません"
