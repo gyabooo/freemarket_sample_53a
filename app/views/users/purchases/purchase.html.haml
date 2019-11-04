@@ -1,0 +1,26 @@
+- case purchases_active_page
+- when 'purchase'
+  - breadcrumb :purchase
+- when 'purchased'
+  - breadcrumb :purchased
+
+= render 'items/header_guide'
+= render 'shared/breadcrumbs'
+
+%main.mypage-container.clearfix
+  .content
+    .purchases
+      = purchases_title
+      .purchases__content
+        %ul.purchases__content__list
+          - purchases_list
+        %ul.purchases__content__items
+          - if @items.present?
+            = render partial: 'users/purchases/item', collection: @items
+          - else
+            %li.purchases__content__items__not-found="#{purchases_active_item_tag}の商品がありません"
+
+  = render 'users/mypage/side'
+  = render 'items/footer_btn'
+
+= render 'items/footer'

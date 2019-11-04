@@ -29,6 +29,16 @@ crumb :completed do
   parent :mypage
 end
 
+crumb :purchase do
+  link "購入した商品 - 取引中", purchase_user_path(current_user)
+  parent :mypage
+end
+
+crumb :purchased do
+  link "購入した商品 - 過去の取引", purchased_user_path(current_user)
+  parent :mypage
+end
+
 # マイページ以下
 crumb :profile do
   link "プロフィール", profile_user_path(current_user)

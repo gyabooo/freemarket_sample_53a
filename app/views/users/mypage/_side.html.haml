@@ -36,11 +36,11 @@
           出品した商品 - 売却済み
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to purchase_user_path(current_user), class: "items__item" do
           購入した商品 - 取引中
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to purchased_user_path(current_user), class: "items__item" do
           購入した商品 - 過去の取引
           %i.icon-arrow-right
       %li

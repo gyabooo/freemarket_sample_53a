@@ -1,0 +1,15 @@
+%li.purchases__content__items__found
+  = link_to mypage_item_show_item_path(item), class: "purchases__content__item" do
+    .purchases__content__item__image
+      = image_tag item.item_images.first.image.url if item.item_images.present?
+    .purchases__content__item__info
+      .purchases__content__item__info__title=item.name
+      .purchases__content__item__info__text
+        %i.icon-like
+        %span.purchases__content__item__info__like=item.item_likes.count
+        %i.icon-comment
+        %span.purchases__content__item__info__comment=item.comments.count
+        %span.purchases__content__item__info__tag="#{purchases_active_item_tag}"
+        - if purchases_active_page === :purchase
+          %span.purchases__content__item__info__tag.purchases__content__item__info__tag--state=item.task_i18n
+    %i.icon-arrow-right

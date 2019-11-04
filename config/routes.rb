@@ -49,6 +49,11 @@ Rails.application.routes.draw do
         get :in_progress
         get :completed
       end
+
+      scope module: :users, controller: 'purchases' do
+        get :purchase
+        get :purchased
+      end
     end
   end
 

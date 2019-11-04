@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_one :credit_card
   has_one :deliver_address
   has_many :comments, dependent: :destroy
+  has_many :buyer_trades, foreign_key: :buyer_id, class_name: "Trade"
+  has_many :buy_items, through: :buyer_trades, source: :item
 
   validates_with UserValidator
 
