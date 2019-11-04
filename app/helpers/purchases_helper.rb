@@ -10,7 +10,7 @@ module PurchasesHelper
   def purchases_list
     [:purchase, :purchased].each do |type|
         concat (
-          content_tag :li, class: "purchases__content__list__title #{ 'active' if purchases_active_page === type }" do
+          content_tag :li, class: "purchases__content__list__title #{ 'active' if purchases_active_page === type || ( type === :purchase && current_page?(user_path(current_user)) ) }" do
             concat link_to purchases_item_tag(type), eval("#{type}_user_path(current_user)")
           end
         )
