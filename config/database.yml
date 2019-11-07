@@ -20,14 +20,14 @@ default: &default
 
 development:
   <<: *default
-  database: freemarket_sample_53a_development
+  database: my_freemarket_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: freemarket_sample_53a_test
+  database: my_freemarket_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,14 +50,14 @@ test:
 #
 staging:
   <<: *default
-  database: freemarket_sample_53a_staging
+  database: my_freemarket_staging
   username: <%= Rails.application.credentials.db[:staging][:username] %>
   password: <%= Rails.application.credentials.db[:staging][:password] %>
   socket: /var/lib/mysql/mysql.sock
 
 production:
   <<: *default
-  database: freemarket_sample_53a_production
+  database: my_freemarket_production
   username: <%= Rails.application.credentials.db[:production][:username] %>
   password: <%= Rails.application.credentials.db[:production][:password] %>
   socket: /var/lib/mysql/mysql.sock

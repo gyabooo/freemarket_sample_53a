@@ -6,7 +6,7 @@ lock '3.11.0'
 # set :application, 'freemarket_sample_53a'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:shunking-tech/freemarket_sample_53a.git'
+set :repo_url,  'git@github.com:gyabooo/freemarket_sample_53a.git'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
@@ -56,7 +56,7 @@ namespace :db do
   task :create do
     on roles(:db) do |host|
       with rails_env: fetch(:rails_env) do
-        within current_path do
+        within release_path do
           execute :bundle, :exec, :rake, 'db:create'
         end
       end
