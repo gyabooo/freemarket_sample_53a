@@ -57,7 +57,7 @@
                   .mypage__list__top__background
                     = image_tag "/sample-avatar.jpg", height: '60', width: '60'
                   .mypage__list__top__username
-                    %span=current_user.full_name
+                    %span=current_user.nickname
                   .mypage__list__top__userinfo
                     %span="評価: #{current_user.user_reviews.count}"
                     %span="出品数: #{current_user.items.count}"

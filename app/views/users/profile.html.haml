@@ -12,10 +12,10 @@
         .profile__greeting__icon
           %figure
             = image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbM5lmk9ySlH6e3nKSxCUsmKEkIxPwsPIFuvDikBpe-I2pSSNQ")
-          = f.text_field :nickname ,value:"テックエキスパー子", placeholder:"(例)AYA★セール中", class:"input-box"
+          = f.text_field :nickname ,value:"#{current_user.nickname}", placeholder:"(例)AYA★セール中", class:"input-box"
 
       .profile__sentence
-        = f.text_area :introduction,placeholder: "例）こんにちは☆ テックエキスパー子です！ピンク中心に出品しています。楽しくプログラミングできるように心がけています。お気軽にどうぞ♪"
+        = f.text_area :introduction, value: "#{current_user.description}", placeholder: "例）こんにちは☆ テックエキスパー子です！ピンク中心に出品しています。楽しくプログラミングできるように心がけています。お気軽にどうぞ♪"
 
         .profile__sentence__change_content
           = button_tag "変更する",type: 'submit', class: 'btn-default'

@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root 'items#index'
 
-  devise_for :users, only: :omniauth_callbacks, controllers: {
+  devise_for :users, only: [:omniauth_callbacks], controllers: {
+    # sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   devise_scope :user do
     # ログイン及びログアウト
     get "sign_in", to: "users/sessions#new"
+    post "sign_in", to: "users/sessions#create"
     get "sign_out", to: "users/sessions#sign_out"
     delete "sign_out", to: "users/sessions#destroy"
 
