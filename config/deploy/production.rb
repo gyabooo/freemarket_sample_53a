@@ -1,4 +1,4 @@
-server 'my.freemarket.gyabooo.work', user: 'ec2-user', roles: %w{app db web}
+server 'origin.my.freemarket.gyabooo.work', user: 'ec2-user', roles: %w{app db web}
 
 set :rails_env, "production"
 set :unicorn_rack_env, "production"
