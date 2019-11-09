@@ -27,7 +27,7 @@ module HeaderGuideHelper
 
   def category_roots(roots, index)
     Rails.cache.fetch("root/#{roots.model_name.name}/#{index}", expired_in: 1.days.to_i) do
-      category_pluck = roots.pluck(:id, :name, :ancestry)
+      category_pluck = roots.pluck(:id, :name)
       Array(roots).map.with_index {|root, i| category_pluck[i].push(root)}
     end
   end
