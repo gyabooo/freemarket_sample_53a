@@ -7,10 +7,10 @@ module HeaderGuideHelper
       index += 1
     end
 
-    roots.each do |root|
+    category_roots(roots, index).each do |id, name, root|
       concat (
         content_tag(:li) do
-          concat link_to root.name, url_for(root), class: 'ddmenu--category_link'
+          concat link_to name, url_for(root), class: 'ddmenu--category_link'
           if root.has_children?
             concat (
               content_tag(:ul, class: "ddmenu--#{index}-level") do
@@ -20,6 +20,15 @@ module HeaderGuideHelper
           end
         end
       )
+    end
+  end
+
+  private
+
+  def category_roots(roots, index)
+    Rails.cache.fetch("root/#{roots.model_name.name}/#{index}", expired_in: 1.days.to_i) do
+      category_pluck = roots.pluck(:id, :name, :ancestry)
+      Array(roots).map.with_index {|root, i| category_pluck[i].push(root)}
     end
   end
 end

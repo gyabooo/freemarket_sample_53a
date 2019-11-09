@@ -22,7 +22,8 @@
                 %path{d: "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", fill: "currentColor", "fill-rule": "nonzero"}
               カテゴリーから探す
             %ul.ddmenu--top-level
-              - ddmenu_list(Category.roots)
+              - cache 'category_ddmenu_list', expires_in: 12.hour do
+                - ddmenu_list(Category.roots)
 
         .topmein-select-band__left__category
           = link_to root_path , class: "topmein-select-band__left__category__tag" do
