@@ -4,7 +4,7 @@ $(function() {
   $(document).on('turbolinks:load', function (e) {
 
     // payjp公開鍵をセット
-    Payjp.setPublicKey("pk_test_71652c9d19ffd414661cd4d8");
+    Payjp.setPublicKey("pk_test_6282c1dd10f7bd91d3d41843");
 
     // クレジットカード登録フォーム
     let form = $("#registration-card__form");
